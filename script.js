@@ -1,22 +1,36 @@
-const btnAdd = document.querySelector("#botaoAdd");
-let areaTexto = document.querySelector("#name");
-let btnEditar = document.querySelectorAll(".editar");
-let btnExcluir = document.querySelectorAll(".excluir");
+const inputArea = document.querySelector("#input");
+const btnSubmit = document.querySelector("#botaoAdd");
+const listaTarefas = document.querySelector(".lista-tarefas");
+const btnLimpar = document.querySelector("#limpar");
 
-function adicionaTarefa() {
-  console.log(areaTexto.value);
-  document.querySelector(".lista-tarefas").innerHTML += `<div class="tarefa">
-  ${areaTexto.value}
-  <div class="opcoes">
-    <button class="editar">editar</button> 
-    <button class="excluir">excluir</button>
-  </div>
-</div>`;
-}
+btnSubmit.addEventListener("click", () => {
+  //cria elementos div e button
+  if (inputArea.value.length <= 0) {
+    alert("Precisa d");
+  } else {
+    let elementoTarefa = document.createElement("div");
+    let tarefaNome = document.createElement("p");
+    tarefaNome.innerText = inputArea.value;
+    inputArea.value = "";
+    let btnApagar = document.createElement("button");
+    btnApagar.innerText = "x";
 
-function excluirTarefa(e) {
-  consoleg.log(e.currentTarget);
-}
+    //adciona classes aos elementos
+    elementoTarefa.classList.add("tarefa");
+    btnApagar.classList.add("tarefa-botao");
 
-btnAdd.addEventListener("click", adicionaTarefa);
-btnExcluir.addEventListener("click", excluirTarefa);
+    //funcao apagar
+    btnApagar.addEventListener("click", () => {
+      listaTarefas.removeChild(elementoTarefa);
+    });
+
+    //adciona os elementos a lista de tarefas
+    elementoTarefa.appendChild(tarefaNome);
+    elementoTarefa.appendChild(btnApagar);
+    listaTarefas.appendChild(elementoTarefa);
+  }
+});
+
+btnLimpar.addEventListener("click", () => {
+  listaTarefas.innerHTML = "";
+});

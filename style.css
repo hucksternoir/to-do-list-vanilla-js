@@ -46,11 +46,27 @@ button {
 }
 
 .tarefa {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0px;
+  position: relative;
+  margin-bottom: 10px;
   position: relative;
   padding: 3px 34px 0px 70px;
   font-family: "Homemade Apple";
   font-size: 1.4rem;
+}
+
+.tarefa-botao {
+  position: absolute;
+  top: 10px;
+  left: 450px;
+  padding: 5px 10px;
+  text-align: center;
+  color: #fff;
+  background-color: red;
+}
+
+#limpar {
+  margin-left: 50%;
+  padding: 12px 24px;
+  background-color: red;
+  color: #fff;
 }
